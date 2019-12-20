@@ -1,0 +1,64 @@
+{
+    "name": "verilog",
+    "displayName": "verilog",
+    "description": "An extension aim at making Verilog programs program easilier.",
+    "version": "0.0.2",
+    "publisher": "Gtylcara-Gewinn",
+    "engines": {
+        "vscode": "^1.38.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "activationEvents": [
+        "*"
+    ],
+    "viewsContainers": {
+        "activitybar": [
+            {
+                "id": "verilogExtension",
+                "title": "Verilog Extension",
+                "icon": "images/image.svg"
+            }
+        ]
+    },
+    "main": "./src/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.verilogtest",
+                "title": "Verilog Test"
+            },
+            {
+                "command": "extension.generate",
+                "title": "Generate"
+            }
+        ],
+        "menus": {
+            "editor/title": [
+                {
+                    "command": "extension.generate",
+                    "alt": "extension.generate",
+                    "group": "navigation"
+                }
+            ]
+        }
+    },
+    "scripts": {
+        "test": "node ./test/runTest.js"
+    },
+    "devDependencies": {
+        "@types/glob": "^7.1.1",
+        "@types/mocha": "^5.2.6",
+        "@types/node": "^10.12.21",
+        "@types/vscode": "^1.38.0",
+        "eslint": "^5.13.0",
+        "glob": "^7.1.4",
+        "mocha": "^6.1.4",
+        "typescript": "^3.3.1",
+        "vscode-test": "^1.2.0"
+    },
+    "extensionPack": [
+        "mshr-h.veriloghdl"
+    ]
+}
