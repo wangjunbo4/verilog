@@ -8,14 +8,27 @@ class BatRunner {
         var exec = require('child_process').exec;
         exec(`${cmdline}`, function (error, stdout, stderr) {
             if (error) {
-                //console.error('error: ' + error);
+                console.error('error: ' + error);
                 vscode.window.showErrorMessage(error.message);
                 return;
             }
-            //console.log('stdout: ' + stdout);
-            vscode.window.showInformationMessage(stdout);
-            //console.log('stderr: ' + stderr);
+            console.log('stdout: ' + stdout);
+            console.log('stderr: ' + stderr);
             vscode.window.showErrorMessage(stderr);
+        });
+    }
+
+
+    runCmdWithoutErrorMsg(cmdline)
+    {
+        var exec = require('child_process').exec;
+        exec(`${cmdline}`, function (error, stdout, stderr) {
+            if (error) {
+                console.error('error: ' + error);
+                return;
+            }
+            console.log('stdout: ' + stdout);
+            console.log('stderr: ' + stderr);
         });
     }
 
@@ -38,6 +51,11 @@ class BatRunner {
             console.log(`exit with code: ${code} `);
         });
     };
+
+    runCmdFuck(cmdline, path) {
+        getfolders.generateBat(path + "temp.bat", cmdline);
+        this.runBat(path + "temp.bat");
+    }
 
     
 /*initBat() {

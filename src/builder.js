@@ -12,6 +12,7 @@ class Builder
         this.sourceFiles = [""];
         this.projectName = "";
         this.compileFiles = "";
+        this.rootFolder = "";
     }
 
     initBuildInfo()
@@ -21,6 +22,7 @@ class Builder
         this.sourceFiles = getFolder.readFolder(this.sourceFolder);
         this.projectName = "";
         this.compileFiles = `${this.projectName} `;
+        this.rootFolder = getFolder.getCurrentWorkspaceFolder();
     }
 
     build()
@@ -63,12 +65,15 @@ class Builder
         }
 
 
-        batRunner.runCmd(`iverilog -o ${this.compileFiles}`);
-        batRunner.runCmd(`vvp -n ${this.projectName} -lxt2`);
-        batRunner.runCmd(`move ${this.projectName}.vcd ${this.projectName}.lxt`);
-        batRunner.runCmd(`gtkwave ${this.projectName}.lxt`);
+        batRunner.runCmd(`iverilog -o ${this.buildFolder}/${this.projectName} ${this.compileFiles}`);
 
         vscode.window.showInformationMessage('Starting Generate');
+    }
+
+    simulate()
+    {
+        batRunner.runCmd(`cd ${this.buildFolder} && vvp -n ${this.buildFolder}/${this.projectName} -lxt2`);
+        batRunner.runCmdWithoutErrorMsg(`cd ${this.buildFolder} && gtkwave ${this.projectName}.vcd`);
     }
 }
 

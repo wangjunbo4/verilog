@@ -36,6 +36,10 @@
             {
                 "command": "extension.generate",
                 "title": "Generate"
+            },
+            {
+                "command": "extension.simulate",
+                "title": "Simulate"
             }
         ],
         "menus": {
@@ -43,6 +47,11 @@
                 {
                     "command": "extension.generate",
                     "alt": "extension.generate",
+                    "group": "navigation"
+                },
+                {
+                    "command": "extension.simulate",
+                    "alt": "extension.simulate",
                     "group": "navigation"
                 }
             ]

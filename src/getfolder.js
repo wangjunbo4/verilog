@@ -55,8 +55,8 @@ class getFolders {
         fs.unlinkSync(path);
     }
 
-    generateBat(path, str) {
-        fs.writeFileSync(path, str);
+    generateBat(path, data) {
+        fs.writeFileSync(path, data);
     }
 
 }
