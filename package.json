@@ -2,7 +2,7 @@
     "name": "verilog",
     "displayName": "verilog",
     "description": "An extension aim at making Verilog programs program easilier.",
-    "version": "0.0.3",
+    "version": "0.1.0",
     "publisher": "Gtylcara-Gewinn",
     "engines": {
         "vscode": "^1.38.0"
