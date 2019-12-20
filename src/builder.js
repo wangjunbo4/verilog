@@ -64,7 +64,6 @@ class Builder
             this.compileFiles += " ";
         }
 
-
         batRunner.runCmd(`iverilog -o ${this.buildFolder}/${this.projectName} ${this.compileFiles}`);
 
         vscode.window.showInformationMessage('Starting Generate');

@@ -20,6 +20,17 @@ class getFolders {
         return folder;
     }
 
+    getAllWorkspaceFolders()
+    {
+        var folderObj = vscode.workspace.workspaceFolders;
+        var folder = [""];
+            for(let i in folderObj)
+            {
+                folder += folderObj[i].uri.toString();
+            }
+        return folder;
+    }
+
     convertOblique(str, flag) {
         if (flag == '/')
         {
