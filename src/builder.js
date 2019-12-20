@@ -62,8 +62,7 @@ class Builder
             this.compileFiles += " ";
         }
 
-        
-        console.log(this.compileFiles);
+
         batRunner.runCmd(`iverilog -o ${this.compileFiles}`);
         batRunner.runCmd(`vvp -n ${this.projectName} -lxt2`);
         batRunner.runCmd(`move ${this.projectName}.vcd ${this.projectName}.lxt`);

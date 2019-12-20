@@ -8,11 +8,14 @@ class BatRunner {
         var exec = require('child_process').exec;
         exec(`${cmdline}`, function (error, stdout, stderr) {
             if (error) {
-                console.error('error: ' + error);
+                //console.error('error: ' + error);
+                vscode.window.showErrorMessage(error.message);
                 return;
             }
-            console.log('stdout: ' + stdout);
-            console.log('stderr: ' + stderr);
+            //console.log('stdout: ' + stdout);
+            vscode.window.showInformationMessage(stdout);
+            //console.log('stderr: ' + stderr);
+            vscode.window.showErrorMessage(stderr);
         });
     }
 
