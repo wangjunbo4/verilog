@@ -13,10 +13,13 @@ class Builder
         this.projectName = "";
         this.compileFiles = "";
         this.rootFolder = "";
+        this.terminal;
     }
 
     initBuildInfo()
     {
+        this.terminal = vscode.window.createTerminal('verilog');
+        this.terminal.show();
         this.buildFolder = `${getFolder.getCurrentWorkspaceFolder()}build`;
         this.sourceFolder = `${getFolder.getCurrentWorkspaceFolder()}src`;
         this.sourceFiles = getFolder.readFolder(this.sourceFolder);
@@ -28,6 +31,7 @@ class Builder
     build()
     {
         this.initBuildInfo();
+    
 
         batRunner.runCmd(`if exist ${this.buildFolder} del /f /s /q "${getFolder.convertOblique(getFolder.getCurrentWorkspaceFolder())}build\\*.*"`);
         batRunner.runCmd(`if not exist ${this.buildFolder} md "${this.buildFolder}"`);
@@ -65,8 +69,7 @@ class Builder
         }
 
         batRunner.runCmd(`iverilog -o ${this.buildFolder}/${this.projectName} ${this.compileFiles}`);
-
-        vscode.window.showInformationMessage('Starting Generate');
+  
     }
 
     simulate()

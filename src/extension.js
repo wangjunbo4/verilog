@@ -9,6 +9,7 @@ exports.activate = function (context) {
     require('./verilogtest')(context);
     require('./generator')(context);
     require('./simulater')(context);
+    require('./completion')(context);
 };
 exports.deactivate = function () {
     console.log("Virlog extension terminated.")

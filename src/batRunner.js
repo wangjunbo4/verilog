@@ -3,7 +3,6 @@ const getfolders = require('./getfolder')
 
 class BatRunner {
 
-
     runCmd(cmdline) {
         var exec = require('child_process').exec;
         exec(`${cmdline}`, function (error, stdout, stderr) {
@@ -17,7 +16,6 @@ class BatRunner {
             vscode.window.showErrorMessage(stderr);
         });
     }
-
 
     runCmdWithoutErrorMsg(cmdline)
     {
@@ -58,64 +56,7 @@ class BatRunner {
     }
 
     
-/*initBat() {
-    var projectName = "";
-    var projectFolder = getfolders.getCurrentWorkspaceFolder();
-    var folder = getfolders.getCurrentWorkspaceFolder() + "/src";
-    var files = getfolders.readFolder(folder);
-    var batFolder = getfolders.getCurrentWorkspaceFolder() + "/build.bat";
-    for (let f in files) {
-        var infos = getfolders.readFile(folder + "/" + files[f]);
-        var index = infos.indexOf("$dumpfile");
-        if (index == -1) {
-            continue;
-        }
-        else {
-            while (infos[index++] != "\"");
-            while (infos[index] != ".") {
-                projectName += infos[index++];
-            }
-            break;
-        }
-    }
-    getfolders.generateBat(batFolder, this.generateBatString(projectName, projectFolder, files));
-};*/
 
-
-/*
-    generateBatString(projectName, workspaceFolder, srcFiles) {
-        var files = new Array();
-        for (var i = 0; i < srcFiles.length; i++) {
-            var temp = workspaceFolder + "src/" + srcFiles[i];
-            files.push(temp);
-        }
-        var batWorkspaceFolder = "";
-        for (var i = 0; i < workspaceFolder.length; i++) {
-            if (workspaceFolder[i] == '/')
-                batWorkspaceFolder += '\\';
-            else
-                batWorkspaceFolder += workspaceFolder[i];
-        }
-        var batString = "";
-        batString += "@echo off\n";
-        batString += "setlocal enabledelayedexpansion\n";
-        batString += `cd ${workspaceFolder} \n`;
-        batString += `if exist build del /f /s /q ${batWorkspaceFolder}build\\*.*\n`;
-        batString += `if not exist build md build\n`;
-        batString += "cd build\n\n";
-
-        batString += `iverilog -o ${projectName}`;
-        for (var i = 0; i < srcFiles.length; i++) {
-            batString += files[i];
-            batString += " ";
-        }
-        batString += `\nvvp -n ${projectName} -lxt2 \n`;
-        batString += `move ${projectName}.vcd ${projectName}.lxt\n`;
-        batString += `gtkwave ${projectName}.lxt`;
-
-        return batString;
-    }
-*/
     test() {
         vscode.window.showInformationMessage('Starting generator test.');
     }

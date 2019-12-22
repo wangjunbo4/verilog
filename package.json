@@ -72,6 +72,8 @@
         "vscode-test": "^1.2.0"
     },
     "extensionPack": [
-        "mshr-h.veriloghdl"
+        
     ]
+    
 }
+
