@@ -71,5 +71,7 @@
         "typescript": "^3.3.1",
         "vscode-test": "^1.2.0"
     },
-    "extensionPack": []
+    "extensionPack": [
+        "mshr-h.veriloghdl"
+    ]
 }
