@@ -1,0 +1,76 @@
+{
+    "name": "verilog",
+    "displayName": "verilog",
+    "description": "An extension aim at making Verilog programs program easilier.",
+    "version": "0.1.6",
+    "publisher": "Gtylcara",
+    "engines": {
+        "vscode": "^1.38.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "activationEvents": [
+        "*"
+    ],
+    "viewsContainers": {
+        "activitybar": [
+            {
+                "id": "verilogExtension",
+                "title": "Verilog Extension"
+            }
+        ]
+    },
+    "main": "./out/extension.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/wangjunbo4/verilog"
+    },
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.build",
+                "title": "build"
+            },
+            {
+                "command": "extension.simulate",
+                "title": "Simulate"
+            }
+        ],
+        "menus": {
+            "editor/title": [
+                {
+                    "command": "extension.build",
+                    "alt": "extension.build",
+                    "group": "navigation"
+                },
+                {
+                    "command": "extension.simulate",
+                    "alt": "extension.simulate",
+                    "group": "navigation"
+                }
+            ]
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "yarn run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "pretest": "yarn run compile",
+        "test": "node ./out/test/runTest.js"
+    },
+    "devDependencies": {
+        "@types/glob": "^7.1.1",
+        "@types/mocha": "^5.2.6",
+        "@types/node": "^10.12.21",
+        "@types/vscode": "^1.51.0",
+        "glob": "^7.1.4",
+        "mocha": "^6.1.4",
+        "typescript": "^3.3.1",
+        "tslint": "^5.12.1",
+        "vscode-test": "^1.2.0"
+    },
+    "extensionPack": [
+        "mshr-h.veriloghdl"
+    ]
+}
